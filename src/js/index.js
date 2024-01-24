@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { ContactProvider } from './views/ContactContext';
 import Home from './home';
 
-const root = document.getElementById('root');
+//const root = document.getElementById('root');
 
 // Antes de React 18
 // ReactDOM.render(
