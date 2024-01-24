@@ -1,9 +1,22 @@
-import React from "react";
+// App.js
+import React from 'react';
+import ContactList from './ContactList';
+import AddContact from './AddContact';
+import EditContact from './EditContact';
+import { ContactProvider } from './ContactContext';
 import "../../styles/home.css";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1></h1>
+const Home = () => {
+  return (
+    <ContactProvider>
+      <div>
+        <h1>Contact Manager</h1>
+        <AddContact />
+        <ContactList />
+        <EditContact />
+      </div>
+    </ContactProvider>
+  );
+};
 
-	</div>
-);
+export default Home;

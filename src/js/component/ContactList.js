@@ -1,27 +1,23 @@
-import React, { useContext, useEffect } from "react";
-import { Context } from "../store/appContext";
-import ContactCard from "./ContactCard";
+// ContactList.js
+import React, { useContext } from 'react';
+import { ContactContext } from './ContactContext';
 
 const ContactList = () => {
-    const { store, actions } = useContext(Context);
+  const { contacts, removeContact } = useContext(ContactContext);
 
-    useEffect(() => {
-        actions.loadData();
-    }, []);
-
-
-
-    return (
-        <div className="contact-list">
-            {store.contactList.length > 0 ? (
-                store.contactList.map((contact, index) => (
-                    <ContactCard key={index} contact={contact} />
-                ))
-            ) : (
-                <p>No contacts available. Add new contacts</p>
-            )}
-        </div>
-    );
+  return (
+    <div>
+      <h2>Contact List</h2>
+      <ul>
+        {contacts.map((contact) => (
+          <li key={contact.id}>
+            {contact.name} - {contact.email}
+            <button onClick={() => removeContact(contact.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default ContactList;
