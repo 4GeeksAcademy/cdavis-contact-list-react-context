@@ -1,18 +1,30 @@
 // AddContact.js
 import React, { useState, useContext } from 'react';
-import { ContactContext } from '../component/ContactContext';
+import { ContactContext } from './ContactContext';
 
 const AddContact = () => {
-  const { addContact } = useContext(ContactContext);
+  const { dispatch } = useContext(ContactContext);
   const [newContact, setNewContact] = useState({ name: '', email: '' });
 
   const handleInputChange = (e) => {
     setNewContact({ ...newContact, [e.target.name]: e.target.value });
   };
 
-  const handleAddContact = () => {
-    addContact({ ...newContact, id: Date.now() });
-    setNewContact({ name: '', email: '' });
+  const handleAddContact = async () => {
+    try {
+      const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newContact),
+      });
+      const data = await resp.json();
+      dispatch({ type: 'ADD_CONTACT', payload: data });
+      setNewContact({ name: '', email: '' });
+    } catch (error) {
+      console.error("Error adding contact: ", error);
+    }
   };
 
   return (

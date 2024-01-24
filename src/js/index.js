@@ -1,10 +1,14 @@
-import React from 'react'
-import {createRoot} from 'react-dom/client'
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ContactProvider } from './views/ContactContext';
+import Home from './home';
 
-import "../styles/index.css";
-
-import Layout from './layout.js'
-
-const root = createRoot(document.querySelector("#app"))
-
-root.render(<Layout/>)
+ReactDOM.render(
+  <React.StrictMode>
+    <ContactProvider>
+      <Home />
+    </ContactProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
