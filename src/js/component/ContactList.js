@@ -1,6 +1,6 @@
 // ContactList.js
 import React, { useContext } from 'react';
-import { ContactContext } from './views/ContactContext';
+import { ContactContext } from '../views/ContactContext';
 
 const ContactList = () => {
   const { state, dispatch } = useContext(ContactContext);

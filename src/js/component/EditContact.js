@@ -1,6 +1,6 @@
 // EditContact.js
 import React, { useState, useContext } from 'react';
-import { ContactContext } from './ContactContext';
+import { ContactContext } from './views/ContactContext';
 
 const EditContact = ({ contact }) => {
   const { contacts, setContacts } = useContext(ContactContext);

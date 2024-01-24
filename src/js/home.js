@@ -1,7 +1,7 @@
 // Home.js
 import React, { useContext, useEffect } from 'react';
 import AddContact from './views/AddContact';
-import ContactList from './ContactList';
+import ContactList from './component/ContactList';
 import { ContactContext } from './views/ContactContext';
 
 const Home = () => {
