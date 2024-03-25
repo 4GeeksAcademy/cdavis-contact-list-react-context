@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import injectContext from "./store/appContext";
 
 import { Contacts } from "./views/Contacts.js";
 import { AddContact } from "./views/AddContact.js";
-import { EditContact } from "./component/EditContact.js";
+import EditContact from "./component/EditContact.js";
 
 export const Layout = () => {
     return (
