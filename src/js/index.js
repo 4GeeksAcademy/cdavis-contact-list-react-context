@@ -1,27 +1,15 @@
-// index.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ContactProvider } from './views/ContactContext';
-import Home from './home';
+//import react into the bundle
+import React from "react";
+import ReactDOM from "react-dom";
 
-//const root = document.getElementById('root');
+//include bootstrap npm library into the bundle
+import "bootstrap/dist/css/bootstrap.css";
 
-// Antes de React 18
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <ContactProvider>
-//       <Home />
-//     </ContactProvider>
-//   </React.StrictMode>,
-//   root
-// );
+//include your index.scss file into the bundle
+import "../styles/index.css";
 
-// React 18
-const rootElement = ReactDOM.createRoot(root);
-rootElement.render(
-  <React.StrictMode>
-    <ContactProvider>
-      <Home />
-    </ContactProvider>
-  </React.StrictMode>
-);
+//import your own components
+import Layout from "./layout";
+
+//render your react application
+ReactDOM.render(<Layout />, document.querySelector("#app"));

@@ -1,7 +1,7 @@
-// Home.js
 import React, { useContext, useEffect } from 'react';
 import AddContact from './views/AddContact';
 import ContactList from './component/ContactList';
+import EditContact from './component/EditContact'; // Asumiendo que es EditContact en lugar de EditContactList
 import { ContactContext } from './views/ContactContext';
 
 const Home = () => {
@@ -27,6 +27,7 @@ const Home = () => {
       <h1>Contact Manager</h1>
       <AddContact />
       <ContactList />
+      <EditContact /> {/* Aquí se renderiza el componente de edición de contactos */}
     </div>
   );
 };

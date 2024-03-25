@@ -1,46 +1,36 @@
-// AddContact.js
-import React, { useState, useContext } from 'react';
-import { ContactContext } from './ContactContext';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const AddContact = () => {
-  const { dispatch } = useContext(ContactContext);
-  const [newContact, setNewContact] = useState({ name: '', email: '' });
-
-  const handleInputChange = (e) => {
-    setNewContact({ ...newContact, [e.target.name]: e.target.value });
-  };
-
-  const handleAddContact = async () => {
-    try {
-      const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newContact),
-      });
-      const data = await resp.json();
-      dispatch({ type: 'ADD_CONTACT', payload: data });
-      setNewContact({ name: '', email: '' });
-    } catch (error) {
-      console.error("Error adding contact: ", error);
-    }
-  };
-
-  return (
-    <div>
-      <h2>Add Contact</h2>
-      <label>
-        Name:
-        <input type="text" name="name" value={newContact.name} onChange={handleInputChange} />
-      </label>
-      <label>
-        Email:
-        <input type="text" name="email" value={newContact.email} onChange={handleInputChange} />
-      </label>
-      <button onClick={handleAddContact}>Add Contact</button>
-    </div>
-  );
+export const AddContact = () => {
+    return (
+        <div className="container">
+            <div>
+                <h1 className="text-center mt-5">Add a new contact</h1>
+                <form>
+                    <div className="form-group">
+                        <label>Full Name</label>
+                        <input type="text" className="form-control" placeholder="Full Name" />
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input type="email" className="form-control" placeholder="Enter email" />
+                    </div>
+                    <div className="form-group">
+                        <label>Phone</label>
+                        <input type="phone" className="form-control" placeholder="Enter phone" />
+                    </div>
+                    <div className="form-group">
+                        <label>Address</label>
+                        <input type="text" className="form-control" placeholder="Enter address" />
+                    </div>
+                    <button type="button" className="btn btn-primary form-control">
+                        save
+                    </button>
+                    <Link className="mt-3 w-100 text-center" to="/">
+                        or get back to contacts
+                    </Link>
+                </form>
+            </div>
+        </div>
+    );
 };
-
-export default AddContact;

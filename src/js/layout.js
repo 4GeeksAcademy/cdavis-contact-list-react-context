@@ -1,36 +1,29 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
-import AddContact from "./views/AddContact";
-import ContactList from "./component/ContactList";
-import EditContact from "./component/EditContact";
+import { Contacts } from "./views/Contacts.js";
+import { AddContact } from "./views/AddContact.js";
+import { EditContact } from "./component/EditContact.js";
 
-const Layout = () => {
-	const basename = process.env.BASENAME || "";
-
-	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Routes>
-						<Route path="/" element={<ContactList />} />
-						<Route path="/add" element={<AddContact />} />
-						<Route path="/edit" element={<EditContact />} />
-						<Route path="/single/:theid" element={<Single />} />
-						<Route path="*" element={<h1>Not found!</h1>} />
-					</Routes>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
-	);
+export const Layout = () => {
+    return (
+        <div>
+            <BrowserRouter>
+                <div>
+                    <Routes>
+                        <Route exact path="/index.html" component={Contacts} />
+                        <Route exact path="/" component={Contacts} />
+                        <Route exact path="/contacts" component={Contacts} />
+                        <Route exact path="/add" component={AddContact} />
+                        <Route exact path="/edit/:id" component={EditContact} />
+                        <Route render={() => <h1 className="notfound">Not found!</h1>} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </div>
+    );
 };
 
 export default injectContext(Layout);
